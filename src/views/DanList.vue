@@ -48,10 +48,9 @@ export default {
 .a-dan-list-wrapp{
 }
 .a-dan-list-container{
-
-  width: 100%;
+  width: 570px;
   height: 100%;
-  margin-top: 20px ;
+  margin-top: 50px ;
   padding: 0px 30px;
   background-color: transparent;
   border-radius: 2px;
