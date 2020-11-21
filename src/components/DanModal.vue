@@ -15,11 +15,10 @@
             <div class="modal-body-name">
                       {{this.$route.params.userprop.name}}
             </div>
-            <div class="modal-body-category">
-
-                      {{this.$store.state.categories[0]}}
-
+            <div v-if="this.$route.params.userprop.category" class="modal-body-category">
+                        {{this.$route.params.userprop.category}}
             </div>
+            <div class="modal-body-category" v-else>{{'Beginner'}}</div>
             <div class="modal-body-icons">
                     <div class="modal-body-crown-count">
                       <div class="modal-body-icon-crown">

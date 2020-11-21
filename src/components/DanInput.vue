@@ -7,6 +7,7 @@
     <option :key="index" v-for="(op,index) in selOption">{{op}}</option>
     </select>
 </div>
+
 </div>
 </template>
 
@@ -19,6 +20,11 @@ export default {
             focusP: false,
             selected:'',
             selOption:this.$store.state.categories
+        }
+    },
+    watch:{
+        selected: function(neoF){
+            this.$emit('emitSelect', neoF)
         }
     },
     computed:{

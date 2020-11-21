@@ -14,10 +14,10 @@
       <div class="a-dan-create-inputs">
             <dan-input @modelUser="userModel" placeholderInput="Name"/>
             <dan-input @modelUser="userEmail" placeholderInput="Email"/>
-            <dan-input :norInput="false" />
+            <dan-input @emitSelect='sendSelect' :norInput="false" />
       </div>
     <div @click="createUser" class="a-dan-create-button">
-            <dan-button bgColorT="rgb(37, 37, 37)" bgColorB="rgb(248, 93, 150,0.1)">Generate</dan-button>
+            <dan-button  bgColorT="rgb(37, 37, 37)" bgColorB="rgb(248, 93, 150,0.1)">Generate</dan-button>
     </div>
     </div>
     </div>
@@ -40,9 +40,8 @@ export default {
   data(){
     return{
       user: this.createUpdateUserObject(),
+      categorie:''
     }
-  },
-  computed:{
   },
   methods:{
     userModel(e){
@@ -51,12 +50,18 @@ export default {
     userEmail(e){0
       this.user.email=e
     },
+    sendSelect(e){
+      this.categorie = e
+      this.$store.state.categorie = e
+    },
     createUser(){
       this.$store.dispatch('inUser/createUser', this.user)
       this.$router.push({
         name:'dan-modal',
         params:{username: this.user.name, userprop: this.user}
       })
+      this.user.category= this.categorie
+      console.log('this obj user event', this.user)
       this.user = this.createUpdateUserObject()
     },
     createUpdateUserObject(){
