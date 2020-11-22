@@ -19,6 +19,7 @@ import store from '@/store/index.js'
 import { mapState  } from 'vuex';
 import Nprogress from 'nprogress'
 
+
 export default {
   name: "DanList",
   components: {
@@ -37,6 +38,7 @@ export default {
 };
 </script>
 <style >
+
 .dan-list{
   width: 100%;
   height: 100%;
