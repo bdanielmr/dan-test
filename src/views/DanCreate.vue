@@ -131,4 +131,22 @@ display: flex;
 .a-dan-create-button{
   margin-top:30px
 }
+@media all and (max-width:860px){
+.a-dan-create{
+  width: 370px;
+
+}
+}
+@media all and (max-width:425px){
+.a-dan-create{
+  width: 300px;
+
+}
+}
+@media all and (max-width:325px){
+.a-dan-create{
+  width: 280px;
+
+}
+}
 </style>

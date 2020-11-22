@@ -68,4 +68,16 @@ export default {
   border: 2px solid  rgba(249, 123, 170);
   color: rgb(37, 37, 37);
 }
+@media all and (max-width:860px){
+.a-dan-button{
+  width: 220px;
+
+}
+}
+@media all and (max-width:425px){
+.a-dan-button{
+  width: 150px;
+
+}
+}
 </style>

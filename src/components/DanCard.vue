@@ -53,8 +53,6 @@ router-link a{
 }
 .dan-card:hover{
 transform: scale(1.1);
-
-
 }
 .a-dan-card-body-text{
     flex-direction: column;
@@ -72,5 +70,17 @@ transform: scale(1.1);
 }
 .a-dan-text-email:hover{
 
+}
+@media all and (max-width:860px){
+.dan-card{
+    width: 370px;
+
+}
+}
+@media all and (max-width:425px){
+.dan-card{
+    width: 270px;
+
+}
 }
 </style>

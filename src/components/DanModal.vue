@@ -93,10 +93,6 @@ import { mapState } from 'vuex'
           return{
             modalShow: true,
             nameReduce: this.$route.params.userprop.name.split(' '),
-            count:{
-              counTotal: 0
-            },
-            aux:[]
           }
         },
         filters: {
@@ -111,11 +107,9 @@ import { mapState } from 'vuex'
             this.$router.push({name:'dan-list'})
           },
           countFav(){
-            console.log('this user router',this.userprop)
+              console.log('this user router',this.userprop)
               this.$store.dispatch('favorite/addFavorite', this.userprop)
               console.log('this new user', this.userprop)
-              console.log('this aux',this.aux)
-              console.log('this new aux',this.aux.push({...this.userprop, fav:0}))
           },
           removeFave(){
             this.$store.dispatch('favorite/remove', this.userprop)
@@ -260,5 +254,38 @@ import { mapState } from 'vuex'
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+@media all and (max-width:860px){
+.modal-body-icons{
+
+  width: 240px;
+  }
+.modal-container{
+  width: 290px;
+
+}
+}
+@media all and (max-width:425px){
+.modal-body{
+  margin: 0px 0;
+}
+.modal-body-icons{
+  height: 100px;
+  width: 240px;
+  }
+.modal-container{
+    height: 300px;
+  width: 240px;
+
+}
+.modal-footer{
+  padding: 30px;
+  margin-bottom: 40px;
+}
+}
+@media all and (max-width:320px){
+.modal-container{
+
+}
 }
 </style>

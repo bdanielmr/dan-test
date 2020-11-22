@@ -1,6 +1,6 @@
 <template>
 <div>
- <div v-if="norInput" class="dan-input" :style="[widthInput, this.focusP ? focusChange : '']"><input @focus="focusP=true" @blur="focusP=false" class="a-dan-input" v-model="model" :placeholder="placeholderInput" @input="sendModel"/></div>
+ <div v-if="norInput" class="dan-input" :style="[this.focusP ? focusChange : '']"><input @focus="focusP=true" @blur="focusP=false" class="a-dan-input" v-model="model" :placeholder="placeholderInput" @input="sendModel"/></div>
  <div class="dan-input-select" v-else>
     <select class="a-dan-input-select"  v-model="selected">
     <option disabled value="">Select a category</option>
@@ -120,5 +120,35 @@ export default {
 
 .a-dan-input-select:focus{
     outline: none !important;
+}
+@media all and (max-width:860px){
+.dan-input{
+     width: 200px;
+
+}
+.a-dan-input{
+     width: 180px;
+}
+.dan-input-select{
+     width: 200px;
+}
+.a-dan-input-select{
+     width: 180px;
+}
+}
+@media all and (max-width:425px){
+.dan-input{
+     width: 160px;
+
+}
+.a-dan-input{
+     width: 150px;
+}
+.dan-input-select{
+     width: 160px;
+}
+.a-dan-input-select{
+     width: 150px;
+}
 }
 </style>
