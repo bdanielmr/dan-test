@@ -34,17 +34,17 @@ export const  actions = {
       dispatch('notification/add', notification, { root: true })
     },
     fetchUsers({commit, dispatch}){
-      DanService.getUsers()
-      .then(res => {
-            commit('SET_USERS', res.data)         
-      })
-      .catch( error => {
-        const notification = {
-          type: 'error',
-          message: 'There was a problem fetching users:' + error.message
-        }
-        dispatch('notification/add', notification, { root: true })
-      })
+      return DanService.getUsers()
+        .then(res => {
+              commit('SET_USERS', res.data)         
+        })
+        .catch( error => {
+          const notification = {
+            type: 'error',
+            message: 'There was a problem fetching users:' + error.message
+          }
+          dispatch('notification/add', notification, { root: true })
+        })
     }
 
   }

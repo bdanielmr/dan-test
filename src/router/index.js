@@ -5,6 +5,7 @@ import DanShow from "../views/DanShow.vue";
 import DanCreate from "../views/DanCreate.vue";
 import DanModal from "../components/DanModal.vue";
 import PageIndex from "../views/Index.vue"
+import Nprogress from "nprogress"
 
 Vue.use(VueRouter);
 
@@ -42,10 +43,22 @@ const routes = [
   },
 ];
 
+
+
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
 });
+
+router.beforeEach()((routeTo, routeFrom, next)=>{
+  console.log('this route',routeFrom,routeTo)
+  Nprogress.start()
+  next()
+})
+
+router.afterEach(()=>{
+  Nprogress.done()
+})
 
 export default router;
