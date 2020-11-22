@@ -57,6 +57,8 @@ router.beforeEach()((routeTo, routeFrom, next)=>{
   next()
 })
 
+
+
 router.afterEach(()=>{
   Nprogress.done()
 })
