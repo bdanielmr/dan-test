@@ -13,13 +13,13 @@
 </template>
 <script>
 import IconBase from "./IconBase.vue";
-import IconStar from "./icons/IconStar.vue";
+import IconHeart from "./icons/IconHeart.vue";
 import IconList from "./icons/IconList.vue";
 import IconCrown from "./icons/IconCrown.vue";
 export default {
   name: "Icon",
   components: {
-    IconStar,
+    IconHeart,
     IconBase,
     IconList,
     IconCrown

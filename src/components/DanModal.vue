@@ -13,15 +13,15 @@
           </div>
           <div class="modal-body">
             <div class="modal-body-name">
-                      {{this.$route.params.userprop.name}}
+                      {{userprop.name}}
             </div>
             <div v-if="this.$route.params.userprop.category" class="modal-body-category">
-                        {{this.$route.params.userprop.category}}
+                        {{userprop.category}}
             </div>
             <div class="modal-body-category" v-else>{{'Beginner'}}</div>
             <div class="modal-body-icons">
                     <div class="modal-body-crown-count">
-                      <div class="modal-body-icon-crown">
+                      <div class="modal-body-icon-crown" @click="countRang">
                             <dan-icon
                             iconName="IconCrown"
                             :icon-color="true ? 'rgba(14, 110, 219)' : '#BFBFBF'"
@@ -30,23 +30,30 @@
                           />
                       </div>
                           <div :style="{'font-size': '26px', 'font-weight': 600, 'margin-top': '25px'}" class="model-body-icon-crown-count">
-                            {{'32'}}
+                            {{'36%'}}
                           </div>
                     </div>
                     <div class="modal-body-star-count">
-                      <div class="modal-body-icon-star">
+                      <div class="modal-body-icon-star" @click="countFav">
                           <dan-icon
-                            iconName="IconStar"
+                            iconName="IconHeart"
                             :icon-color="true ? 'rgba(137, 29, 209)' : '#BFBFBF'"
-                            width="21px"
-                            height="21px"
+                            width="28px"
+                            height="28px"
                           />
                       </div>
-                          <div :style="{'font-size': '26px', 'font-weight': 600, 'margin-top': '25px'}" class="model-body-icon-star-count">
-                            {{'420'}}
+
+                          <div :style="{'font-size': '28px', 'font-weight': 600, 'margin-top': '25px'}" class="model-body-icon-star-count">
+                           <div v-if="favorite.favorites.length==0">
+                             {{'0'}}
+                           </div>
+                           <div :key="index" v-for="(favo, index) in favorite.favorites">
+                                <div v-if="userprop.id==favo.id">                                 
+                                      {{favo.fav}}
+                                </div>
+                           </div>
                           </div>
                     </div>
-
             </div>
           </div>
 
@@ -71,16 +78,25 @@
 <script>
 import DanButton from '@/components/DanButton.vue'
 import DanIcon from '@/components/DanIcon/Icon.vue'
+import { mapState } from 'vuex'
     export default {
         name:'DanModal',
         components:{
           DanButton,
           DanIcon
         },
+        computed:{
+          ...mapState(['favorite'])
+        },
+        props:['userprop'],
         data(){
           return{
             modalShow: true,
-            nameReduce: this.$route.params.userprop.name.split(' ')
+            nameReduce: this.$route.params.userprop.name.split(' '),
+            count:{
+              counTotal: 0
+            },
+            aux:[]
           }
         },
         filters: {
@@ -93,6 +109,19 @@ import DanIcon from '@/components/DanIcon/Icon.vue'
         methods:{
           goToHome(){
             this.$router.push({name:'dan-list'})
+          },
+          countFav(){
+            console.log('this user router',this.userprop)
+              this.$store.dispatch('favorite/addFavorite', this.userprop)
+              console.log('this new user', this.userprop)
+              console.log('this aux',this.aux)
+              console.log('this new aux',this.aux.push({...this.userprop, fav:0}))
+          },
+          removeFave(){
+            this.$store.dispatch('favorite/remove', this.userprop)
+          },
+          countRang(){
+
           }
         }
     }
@@ -174,6 +203,7 @@ import DanIcon from '@/components/DanIcon/Icon.vue'
 .modal-body-icon-crown{
   width: 50px;
   height: 50px;
+  padding: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -189,9 +219,11 @@ import DanIcon from '@/components/DanIcon/Icon.vue'
   width: 50px;
   height: 50px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  padding-top: 3px;
+  padding-left: 3px;
   border-radius: 50%;
+  justify-content: center;
+  align-items: center;
   border: 2px solid  rgba(137, 29, 209);
   background: rgba(137, 29, 209, 0.08);
 }

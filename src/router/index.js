@@ -27,6 +27,7 @@ const routes = [
             path:':username',
             name:'dan-modal',
             component: DanModal,
+            props:true
           },
           {
             path:'create',
