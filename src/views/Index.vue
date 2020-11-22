@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <router-view />
   </div>
 </template>
@@ -12,3 +12,8 @@ export default {
   }
 }
 </script>
+<style>
+.dan-index{
+
+}
+</style>

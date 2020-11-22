@@ -2,7 +2,7 @@
   <header class="dan-header">
     <router-link style="text-decoration: none; color: inherit;" :to="{name: 'dan-list'}">
     <div class="a-dan-header">
-      <div :style="{color:'#586166', 'margin-left': '150px'}">Heroku</div> 
+      <div class="a-dan-header-logo">Heroku</div> 
       <div>User</div>
     </div>
     </router-link>
@@ -25,9 +25,23 @@ export default {
     font-size: 26px;
     font-weight: 600;
     color: #f97baa;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    padding-left:150px ;
+    box-shadow:0 1px 3px rgba(0, 0, 0, 0.3), 0 0 3px rgba(0, 0, 0, 0.1) inset;
 }
 .a-dan-header{
   display: flex;
+  width: 100%;
+  height: 55px;
+  align-items: center;
+}
+.a-dan-header-logo{
+  color:#586166;
+}
+@media all and (max-width:860px){
+.dan-header{
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
+}
 }
 </style>

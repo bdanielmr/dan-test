@@ -25,16 +25,25 @@ export const  mutations = {
 }
 
 export const  actions = {
-    createUser({commit}, user){
+    createUser({commit, dispatch}, user){
       commit('ADD_USER', user)
+      const notification = {
+        type: 'success',
+        message: 'Your User has been created!'
+      }
+      dispatch('notification/add', notification, { root: true })
     },
-    fetchUsers({commit}){
+    fetchUsers({commit, dispatch}){
       DanService.getUsers()
       .then(res => {
             commit('SET_USERS', res.data)         
       })
       .catch( error => {
-        console.log(error)
+        const notification = {
+          type: 'error',
+          message: 'There was a problem fetching users:' + error.message
+        }
+        dispatch('notification/add', notification, { root: true })
       })
     }
 

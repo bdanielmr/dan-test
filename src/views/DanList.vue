@@ -48,17 +48,14 @@ export default {
 .a-dan-list-wrapp{
 }
 .a-dan-list-container{
-
-  width: 100%;
   height: 100%;
-  margin-top: 20px ;
+  margin-top: 50px ;
   padding: 0px 30px;
   background-color: transparent;
   border-radius: 2px;
   font-family: Helvetica, Arial, sans-serif;
 }
 .a-dan-list-container-two{
-  width: 100%;
   margin: 0px 0px;
   padding: 0px 30px;
   background-color: transparent;
