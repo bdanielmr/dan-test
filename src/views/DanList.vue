@@ -15,25 +15,25 @@
 // @ is an alias to /src
 
 import DanCard from "@/components/DanCard.vue"
-
+import store from '@/store/index.js'
 import { mapState  } from 'vuex';
+import Nprogress from 'nprogress'
 
 export default {
   name: "DanList",
   components: {
     DanCard
   },
+  beforeRouteEnter(routeTo, routeFrom, next){
+    Nprogress.start()
+    store.dispatch('inUser/fetchUsers').then(()=>{
+      Nprogress.done()
+      next()
+    })
+  },
   computed:{
     ...mapState(['inUser'])
   },
-  created(){
-    this.showUsersApi()
-  },
-  methods:{
-    showUsersApi(){
-      this.$store.dispatch('inUser/fetchUsers')
-    }
-  }
 };
 </script>
 <style >
