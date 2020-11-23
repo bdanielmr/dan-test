@@ -1,4 +1,6 @@
 <template>
+<!--Component custom card that render a user 
+  and show some data to router to Component DanModal-->
   <router-link
     style="text-decoration: none; color: inherit;"
     :to="{ name: 'dan-modal', params: { userprop: user, username: user.name } }"
@@ -8,10 +10,12 @@
       @mouseenter="hoverCard = true"
       @mouseleave="hoverCard = false"
     >
+    <!-- render name user -->
       <div class="a-dan-body-text">
         <div class="a-dan-text-name">
           {{ user.name }}
         </div>
+    <!-- render email only destok user-->
         <div v-show="hoverCard" class="a-dan-text-email">
           {{ user.email }}
         </div>

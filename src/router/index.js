@@ -9,7 +9,8 @@ import Nprogress from "nprogress"
 import Error404 from "../views/Error404.vue";
 
 Vue.use(VueRouter);
-
+//navigation vue-router pages with props
+//and Nprogress loading bar
 const routes = [
   {
     path: "/",
@@ -53,22 +54,19 @@ const routes = [
   }
 ];
 
-
-
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes
 });
-
+//Nprogress loading bar active while fetching data
 router.beforeEach()((routeTo, routeFrom, next)=>{
 
   Nprogress.start()
   next()
 })
 
-
-
+//Nprogress loading bar done when get data
 router.afterEach(()=>{
   Nprogress.done()
 })

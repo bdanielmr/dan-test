@@ -1,6 +1,13 @@
 # dan-test
 
-## Project setup
+## Project setup Dan-Test
+```
+with vue, vue-router and vuex
+```
+```
+example: http://138.68.54.112/
+```
+
 ```
 npm install
 ```

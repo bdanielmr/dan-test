@@ -1,4 +1,6 @@
 <template>
+<!-- Page render card list user 
+  from array of object user module vuex-->
   <div class="dan-list">
     <div class="a-dan-list-wrapp">
       <div class="a-dan-list-container">
@@ -12,19 +14,18 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
+//dependecies and coomponents 
 import DanCard from "@/components/DanCard.vue"
 import store from '@/store/index.js'
 import { mapState  } from 'vuex';
 import Nprogress from 'nprogress'
-
 
 export default {
   name: "DanList",
   components: {
     DanCard
   },
+  //routering fetch acctions to module inUser store vuex
   beforeRouteEnter(routeTo, routeFrom, next){
     Nprogress.start()
     store.dispatch('inUser/fetchUsers').then(()=>{
@@ -33,6 +34,7 @@ export default {
     })
   },
   computed:{
+    //mapping state from inUser module
     ...mapState(['inUser'])
   },
 };

@@ -1,10 +1,11 @@
+//module favorite 
 export const namespaced = true
 
 export const state = {
     favorites:[],
     count: 1
 }
-
+//mutation module favorite
 export const mutations = {
     ADD_FAVORITES(state, favorite){
         //state.favorites = [{...favorite, count: count++}]
@@ -26,7 +27,7 @@ export const mutations = {
         )
     }
 }
-
+//action module favorite
 export const actions = {
     addFavorite({commit}, favorite){
         commit('ADD_FAVORITES', favorite)

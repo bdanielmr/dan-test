@@ -1,10 +1,10 @@
 export const namespaced = true
-
+//module notification
 export const state = {
     notifications:[]
 }
 let nextId = 1
-
+//mutation notification module
 export const mutations = {
     PUSH(state, notification){
         state.notifications.push({
@@ -17,7 +17,7 @@ export const mutations = {
         )
     }
 }
-
+//action notification module
 export const actions = {
     add({commit}, notification){
         commit('PUSH', notification)
