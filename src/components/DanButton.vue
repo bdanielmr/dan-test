@@ -1,4 +1,5 @@
 <template>
+  <!--Component custom buttom -->
   <div :style="changeClassStyle" class="dan-button">
     <button :class="['a-dan-button']" autofocus><slot /></button>
   </div>
@@ -39,14 +40,14 @@ export default {
       default: "aliceblue",
       required: false
     },
-    disabled:{
+    disabled: {
       type: Boolean,
       default: false,
       required: false
     },
-    type:{
+    type: {
       type: String,
-      default: '',
+      default: "",
       required: false
     }
   }

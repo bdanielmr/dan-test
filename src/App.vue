@@ -1,8 +1,12 @@
 <template>
   <div id="app">
+    <!--Component Custom Header -->
     <dan-header v-sticky:top />
+    <!--show navigation page view-->
     <router-view />
+    <!--component Custom notification-->
     <dan-notification-container />
+    <!--component footer-->
     <dan-footer v-sticky:bottom />
   </div>
 </template>

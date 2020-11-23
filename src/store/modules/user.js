@@ -1,3 +1,4 @@
+//module user 
 export const state = {
     user: {
         id:'abc1234',

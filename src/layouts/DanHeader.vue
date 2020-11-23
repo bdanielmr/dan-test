@@ -1,6 +1,8 @@
 <template>
+    <!--Component  Danheader width logo -->
   <header class="dan-header">
     <router-link style="text-decoration: none; color: inherit;" :to="{name: 'dan-list'}">
+          <!--Custom header logo -->
     <div class="a-dan-header">
       <div class="a-dan-header-logo">Heroku</div> 
       <div>User</div>
@@ -11,7 +13,7 @@
 
 <script>
 export default {
-
+  name: "DanHeader"
 }
 </script>
 

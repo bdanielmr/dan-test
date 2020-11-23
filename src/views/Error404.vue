@@ -1,31 +1,38 @@
 <template>
+<!--Page 404 error-->
   <div class="dan-error-404">
     <div id="background"></div>
     <div class="top">
-    <h1>404</h1>
-    <h3>page not found</h3>
+      <h1>404</h1>
+      <h3>page not found</h3>
     </div>
     <div class="container">
-    <div class="ghost-copy">
+      <div class="ghost-copy">
         <div class="one"></div>
         <div class="two"></div>
         <div class="three"></div>
         <div class="four"></div>
-    </div>
-    <div class="ghost">
+      </div>
+      <div class="ghost">
         <div class="face">
-        <div class="eye"></div>
-        <div class="eye-right"></div>
-        <div class="mouth"></div>
+          <div class="eye"></div>
+          <div class="eye-right"></div>
+          <div class="mouth"></div>
         </div>
-    </div>
-    <div class="shadow"></div>
+      </div>
+      <div class="shadow"></div>
     </div>
     <div class="bottom">
-    <p>Boo, looks like a ghost stole this page!</p>
+      <p>Boo, looks like a ghost stole this page!</p>
 
-    <router-link style="text-decoration: none; color: inherit;" :to="{name: 'dan-list'}"><dan-button bgColorT="rgb(37, 37, 37)" bgColorB="rgb(248, 93, 150,0.1)">Home</dan-button></router-link>
-     
+      <router-link
+        style="text-decoration: none; color: inherit;"
+        :to="{ name: 'dan-list' }"
+      >
+        <dan-button bgColorT="rgb(37, 37, 37)" bgColorB="rgb(248, 93, 150,0.1)">
+          Home
+        </dan-button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -34,20 +41,18 @@
 import DanButton from "@/components/DanButton.vue";
 export default {
   components: {
-      DanButton
+    DanButton
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-
-$white: #EDEDED;
+$white: #ededed;
 $gray: #c0bfc0;
 $dark: #585959;
-$light: #D3DEEA;
+$light: #d3deea;
 
-
-$body: 'Lato', sans-serif;
+$body: "Lato", sans-serif;
 
 .top {
   margin-top: 30px;
@@ -88,14 +93,15 @@ $body: 'Lato', sans-serif;
   z-index: 0;
 }
 
-
 .face {
   position: absolute;
   width: 100%;
   height: 60%;
   top: 20%;
 }
-.eye, .eye-right {
+
+.eye,
+.eye-right {
   position: absolute;
   background: $dark;
   width: 13px;
@@ -107,12 +113,13 @@ $body: 'Lato', sans-serif;
 .eye {
   left: 25%;
 }
+
 .eye-right {
   right: 25%;
 }
 
 .mouth {
-  position:absolute;
+  position: absolute;
   top: 50%;
   left: 45%;
   width: 10px;
@@ -123,7 +130,10 @@ $body: 'Lato', sans-serif;
   transform: rotate(45deg);
 }
 
-.one, .two, .three, .four {
+.one,
+.two,
+.three,
+.four {
   position: absolute;
   background: $white;
   top: 85%;
@@ -178,7 +188,7 @@ $body: 'Lato', sans-serif;
 
 @keyframes float {
   50% {
-     transform: translateY(15px);
+    transform: translateY(15px);
   }
 }
 
@@ -203,9 +213,8 @@ p {
   text-align: center;
   font-family: $body;
   color: $dark;
-  font-size: .6em;
+  font-size: 0.6em;
   margin-top: -20px;
   text-transform: uppercase;
 }
-
 </style>

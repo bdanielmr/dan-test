@@ -5,7 +5,7 @@ import * as inUser from './modules/inUser.js';
 import * as notification from './modules/notification.js';
 import * as favorite from './modules/favorite.js';
 Vue.use(Vuex);
-
+//store of vuex that obtain from ./modules 
 export default new Vuex.Store({
   modules:{
     user,
