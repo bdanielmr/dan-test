@@ -1,74 +1,53 @@
 <template>
   <div class="dan-error-404">
-<div id="background"></div>
-<div class="top">
-  <h1>404</h1>
-  <h3>page not found</h3>
-</div>
-<div class="container">
-  <div class="ghost-copy">
-    <div class="one"></div>
-    <div class="two"></div>
-    <div class="three"></div>
-    <div class="four"></div>
-  </div>
-  <div class="ghost">
-    <div class="face">
-      <div class="eye"></div>
-      <div class="eye-right"></div>
-      <div class="mouth"></div>
+    <div id="background"></div>
+    <div class="top">
+    <h1>404</h1>
+    <h3>page not found</h3>
     </div>
-  </div>
-  <div class="shadow"></div>
-</div>
-<div class="bottom">
-  <p>Boo, looks like a ghost stole this page!</p>
-  <form class="search">
-    <input type="text" class="search-bar" placeholder="Search">
-    <button type="submit" class="search-btn">
-      <i class="fa fa-search"></i>
-    </button>
-  </form>
-  <div class="buttons">
-    <button class="btn">Back</button>
-    <button class="btn">Home</button>
-  </div>
-</div>
+    <div class="container">
+    <div class="ghost-copy">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+        <div class="four"></div>
+    </div>
+    <div class="ghost">
+        <div class="face">
+        <div class="eye"></div>
+        <div class="eye-right"></div>
+        <div class="mouth"></div>
+        </div>
+    </div>
+    <div class="shadow"></div>
+    </div>
+    <div class="bottom">
+    <p>Boo, looks like a ghost stole this page!</p>
 
-<footer>
-  <p>made by <a href="https://codepen.io/juliepark"> julie</a></p> ♡
-</footer>
+    <router-link style="text-decoration: none; color: inherit;" :to="{name: 'dan-list'}"><dan-button bgColorT="rgb(37, 37, 37)" bgColorB="rgb(248, 93, 150,0.1)">Home</dan-button></router-link>
+     
+    </div>
   </div>
 </template>
 
 <script>
+import DanButton from "@/components/DanButton.vue";
 export default {
-
+  components: {
+      DanButton
+  }
 }
 </script>
 
-<style lang="scss" >
-.dan-error-404 {
-    display: flex;
-    align-items: center;
-    justify-items: center;
-    width: 500px;
-    height: 800px;
-}
+<style lang="scss" scoped>
 
 $white: #EDEDED;
-$gray: #BFC0C0;
+$gray: #c0bfc0;
 $dark: #585959;
 $light: #D3DEEA;
 
-@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Lato');
 
-$big: 'Abril Fatface', serif;
 $body: 'Lato', sans-serif;
-
-body {
-  background: $light;
-}
 
 .top {
   margin-top: 30px;
@@ -178,7 +157,7 @@ body {
   position: absolute;
   width: 30%;
   height: 7%;
-  background: $gray;
+  background: #eb8beb31;
   left: 35%;
   top: 80%;
   border-radius: 50%;
@@ -203,13 +182,8 @@ body {
   }
 }
 
-.bottom {
-  margin-top: 10px;
-}
-
 /*text styling*/
 h1 {
-  font-family: $big;
   color: $white;
   text-align: center;
   font-size: 9em;
@@ -234,83 +208,4 @@ p {
   text-transform: uppercase;
 }
 
-.search {
-  text-align: center;
-}
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-/*search style*/
-
-.search-bar {
-  border: 1px solid $gray;
-  padding: 5px;
-  height: 20px;
-  margin-left: -30px;
-  width: 200px;
-  outline: none;
-  &:focus {
-    border: 1px solid $light;
-  }
-}
-
-.search-btn {
-  position: absolute;  
-  width: 30px;
-  height: 32px;
-  border: 1px solid $gray;
-  background: $gray;
-  text-align: center;
-  color: $white;
-  cursor: pointer;
-  font-size: 1em;
-  outline: none;
-  &:hover {
-    background: $white;
-    border: 1px solid $white;
-    color: $gray;
-    transition: all .2s ease;
-  }
-}
-
-.btn {
-  background: $white;
-  padding: 15px 20px;
-  margin: 5px;
-  color: $dark;
-  font-family: $body;
-  text-transform: uppercase;
-  font-size: .6em;
-  letter-spacing: 1px;
-  border: 0;
-  &:hover {
-    background: $gray;
-    transition: all .4s ease-out;
-  }
-}
-
-footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  text-align: center;
-  font-size: 0.8em;
-  text-transform: uppercase;
-  padding: 10px;
-  color: #EA7996;
-  letter-spacing: 3px;
-  font-family: $body;
-  a {
-    color: #ffffff;
-    text-decoration: none;
-    &:hover {
-      color: #7d7d7d;
-    }
-  }
-}
 </style>
