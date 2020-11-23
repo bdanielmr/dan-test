@@ -11,14 +11,23 @@
       <div class="a-dan-create-user-sub-title">
         Enter your name and email to generate an Id
       </div>
-      <div class="a-dan-create-inputs">
-            <dan-input @modelUser="userModel" placeholderInput="Name"/>
-            <dan-input @modelUser="userEmail" placeholderInput="Email"/>
-            <dan-input @emitSelect='sendSelect' :norInput="false" />
-      </div>
-    <div @click="createUser" class="a-dan-create-button">
-            <dan-button  bgColorT="rgb(37, 37, 37)" bgColorB="rgb(248, 93, 150,0.1)">Generate</dan-button>
-    </div>
+      <form @submit.prevent="createUser">
+          <div class="a-dan-create-inputs">
+                <dan-input :class="{error: $v.user.name.$error }" @blur="$v.user.name.$touch()" @modelUser="userModel" placeholderInput="Name"/>
+                <template v-if="$v.user.name.$error">
+                  <p v-if="!$v.user.name.required" class="errorMessge">name is required</p>
+                </template>
+                <dan-input :class="{error: $v.user.email.$error }" @blur="$v.user.email.$touch()" @modelUser="userEmail" placeholderInput="Email"/>
+                <template v-if="$v.user.email.$error">
+                  <p v-if="!$v.user.email.required" class="errorMessge">email is required</p>
+                </template>
+                <dan-input @emitSelect='sendSelect' :norInput="false"/>
+          </div>
+          <div class="a-dan-create-button">
+                  <dan-button type="submit" :disabled="$v.$anyError" bgColorT="rgb(37, 37, 37)" bgColorB="rgb(248, 93, 150,0.1)">Generate</dan-button>
+                  <p v-if="$v.$anyError" :style="{'font-size': '13px'}" class="errorMessge">Please fill out the required field(s)</p>
+          </div>
+      </form>
     </div>
     </div>
 
@@ -29,6 +38,7 @@
 import DanInput from '@/components/DanInput.vue'
 //import { mapState, mapGetters} from 'vuex'
 import DanButton from '../components/DanButton.vue'
+import { required } from 'vuelidate/lib/validators'
 
 export default {
   name:'DanCreate',
@@ -43,6 +53,12 @@ export default {
       categorie:''
     }
   },
+   validations: {
+    user: {
+      name: { required },
+      email: { required },
+    }
+   },
   methods:{
     userModel(e){
       this.user.name=e
@@ -55,18 +71,22 @@ export default {
       this.$store.state.categorie = e
     },
     createUser(){
-      this.$store.dispatch('inUser/createUser', this.user)
-      this.$router.push({
-        name:'dan-modal',
-        params:{username: this.user.name, userprop: this.user}
-      })
-      this.user.category= this.categorie
-      console.log('this obj user event', this.user)
-      this.user = this.createUpdateUserObject()
+      this.$v.$touch()
+      if(!this.$v.$invalid){
+        this.$store.dispatch('inUser/createUser', this.user)
+        this.$router.push({
+          name:'dan-modal',
+          params:{username: this.user.name, userprop: this.user}
+        })
+        this.user.category= this.categorie
+        console.log('this obj user event', this.user)
+        this.user = this.createUpdateUserObject()
+      }
+
     },
     createUpdateUserObject(){
-      const name = this.$store.state.user.user.name
-      const email = this.$store.state.user.user.email
+      const name = ''
+      const email = ''
       const id = Math.floor(Math.random()*10000000)
       return{
         id: id,
@@ -128,8 +148,12 @@ display: flex;
 .a-dan-create-inputs{
   margin-top: 25px
 }
+.errorMessge{
+  padding: 0px;
+  margin-top: 2px;
+}
 .a-dan-create-button{
-  margin-top:30px
+  margin-top:13px
 }
 @media all and (max-width:860px){
 .a-dan-create{

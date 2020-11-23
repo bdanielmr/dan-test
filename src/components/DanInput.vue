@@ -1,8 +1,8 @@
 <template>
 <div>
- <div v-if="norInput" class="dan-input" :style="[this.focusP ? focusChange : '']"><input @focus="focusP=true" @blur="focusP=false" class="a-dan-input" v-model="model" :placeholder="placeholderInput" @input="sendModel"/></div>
+ <div v-if="norInput" class="dan-input" :style="[this.focusP ? focusChange : '']"><input v-on="$listeners" v-bind="$attrs" :value="value" @focus="focusP=true" @blur="focusP=false" class="a-dan-input" v-model="model" :placeholder="placeholderInput" @input="sendModel"/></div>
  <div class="dan-input-select" v-else>
-    <select class="a-dan-input-select"  v-model="selected">
+    <select class="a-dan-input-select" v-on="$listeners" v-model="selected">
     <option disabled value="">Select a category</option>
     <option :key="index" v-for="(op,index) in selOption">{{op}}</option>
     </select>
@@ -37,8 +37,9 @@ export default {
             return{
                     border: '1px solid #f97baa'
             }
-        }
+        },
     },
+    inheritAttrs: false,
     props:{
         placeholderInput:{
             type: String,
@@ -59,11 +60,16 @@ export default {
             type: Boolean,
             default: true,
             required: false
+        },
+        value:{
+            type:[ String, Number],
+            required: false
         }
     },
     methods:{
         sendModel(){
             this.$emit('modelUser', this.model)
+            this.$emit('input', event.target.value)
         },
     }
 }

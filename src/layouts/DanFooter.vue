@@ -1,7 +1,7 @@
 <template>
   <div class="dan-footer">
-     <router-link style="text-decoration: none; color: inherit;" :to="{name: 'dan-list'}"><dan-button bgColorT="rgb(37, 37, 37)" bgColorB="rgb(248, 93, 150,0.1)">home</dan-button></router-link> |
-     <router-link style="text-decoration: none; color: inherit;" :to="{name: 'dan-create'}"><dan-button bgColorT="rgb(37, 37, 37)" bgColorB="rgb(248, 93, 150,0.1)">create</dan-button></router-link>
+     <router-link style="text-decoration: none; color: inherit;" :to="{name: 'dan-list'}"><dan-button bgColorT="rgb(37, 37, 37)" bgColorB="rgb(248, 93, 150,0.1)">Home</dan-button></router-link> |
+     <router-link style="text-decoration: none; color: inherit;" :to="{name: 'dan-create'}"><dan-button bgColorT="rgb(37, 37, 37)" bgColorB="rgb(248, 93, 150,0.1)">Create</dan-button></router-link>
   </div>
 </template>
 
