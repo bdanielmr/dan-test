@@ -38,6 +38,16 @@ export default {
       type: String,
       default: "aliceblue",
       required: false
+    },
+    disabled:{
+      type: Boolean,
+      default: false,
+      required: false
+    },
+    type:{
+      type: String,
+      default: '',
+      required: false
     }
   }
 };
