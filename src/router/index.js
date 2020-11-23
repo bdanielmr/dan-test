@@ -6,6 +6,7 @@ import DanCreate from "../views/DanCreate.vue";
 import DanModal from "../components/DanModal.vue";
 import PageIndex from "../views/Index.vue"
 import Nprogress from "nprogress"
+import Error404 from "../views/Error404.vue";
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,15 @@ const routes = [
     ],
     props: true
   },
+  {
+    path:'/404',
+    name: '404',
+    component: Error404
+  },
+  {
+    path:'/*',
+    redirect: { name:'404' },
+  }
 ];
 
 
@@ -52,7 +62,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach()((routeTo, routeFrom, next)=>{
-  console.log('this route',routeFrom,routeTo)
+
   Nprogress.start()
   next()
 })

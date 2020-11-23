@@ -7,31 +7,24 @@
   </div>
 </template>
 <script>
-import DanHeader from '@/layouts/DanHeader.vue'
-import DanFooter from '@/layouts/DanFooter.vue'
-import DanNotificationContainer from './components/DanNotificationContainer.vue'
+import DanHeader from "@/layouts/DanHeader.vue";
+import DanFooter from "@/layouts/DanFooter.vue";
+import DanNotificationContainer from "./components/DanNotificationContainer.vue";
 export default {
-  name: 'App',
-  components:{
+  name: "App",
+  components: {
     DanFooter,
     DanHeader,
     DanNotificationContainer
-  },
-  data(){
-    return{
-
-    }
   }
-}
+};
 </script>
 <style>
-
-.app-header{
-  margin-bottom:45px ;
+.app-header {
+  margin-bottom: 45px;
 }
 body {
-  margin: 45px 0 45px 0 ;
-
+  margin: 45px 0 45px 0;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
