@@ -55,7 +55,7 @@
                   }"
                   class="model-body-icon-crown-count"
                 >
-                  {{ "36%" }}
+                  <p>36%</p>
                 </div>
               </div>
               <div class="modal-body-star-count">
@@ -75,14 +75,19 @@
                   }"
                   class="model-body-icon-star-count"
                 >
-                  <div v-if="favorite.favorites.length == 0">
-                    {{ "0" }}
-                  </div>
+                <!-- {{favorite.favorites}} -->
+                <div v-if="userprop.fav<=1">
+                    <p>0</p>
+                </div>
+                <div :key="fa.id" v-for="fa in favorite.favorites">
+                  <p v-if="fa.id===userprop.id">{{fa.fav}}</p>
+                </div>
+                  <!-- 
                   <div :key="index" v-for="(favo, index) in favorite.favorites">
                     <div v-if="userprop.id == favo.id">
                       {{ favo.fav }}
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -143,17 +148,16 @@ export default {
       value = value.toString();
       return value.charAt(0).toUpperCase() + value.slice(1);
     }
-  },
+  }, 
   methods: {
     //function do return home page
     goToHome() {
       this.$router.push({ name: "dan-list" });
     },
     //obtain module favorite from vuex and get acctions from store
-    countFav() {
-      console.log("this user router", this.userprop);
+    countFav() {   
+      console.log("this user router favorite UserProp", this.userprop);
       this.$store.dispatch("favorite/addFavorite", this.userprop);
-      console.log("this new user", this.userprop);
     },
     removeFave() {
       this.$store.dispatch("favorite/remove", this.userprop);

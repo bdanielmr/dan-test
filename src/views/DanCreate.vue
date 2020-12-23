@@ -125,7 +125,8 @@ export default {
         id: id,
         name: name,
         email: email,
-        category: ""
+        category: "",
+        fav: 1
       };
     }
   }

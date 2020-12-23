@@ -3,7 +3,7 @@
   and show some data to router to Component DanModal-->
   <router-link
     style="text-decoration: none; color: inherit;"
-    :to="{ name: 'dan-modal', params: { userprop: user, username: user.name } }"
+    :to="{ name: 'dan-modal', params: { userprop: changeUser, username: user.name } }"
   >
     <div
       class="dan-card"
@@ -30,6 +30,25 @@ export default {
     return {
       hoverCard: false
     };
+  },
+  computed:{
+    changeUser(){
+      const id= this.user.id;
+      const name= this.user.name;
+      const email = this.user.email;
+      let favo = 1
+      for(let i=0; i<this.$store.state.favorite.favorites.length; i++){
+        if(this.$store.state.favorite.favorites[i].id === id){
+          favo +=1;
+        }
+      }
+      return {
+        id:id,
+        name:name,
+        email:email,
+        fav:favo
+      }
+    }
   },
   props: {
     user: {
